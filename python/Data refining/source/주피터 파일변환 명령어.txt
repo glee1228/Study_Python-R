@@ -1,0 +1,6 @@
+jupyter nbconvert [파일명].ipynb  -> html 변환 명령어
+
+jupyter nbconvert --to script [파일명].ipynb  -> .py 변환 명령어
+
+jupyter nbconvert --to markdown [파일명].ipynb  -> markdown 변환 명령어
+
