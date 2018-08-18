@@ -70,19 +70,29 @@ ageg_income<-welfare%>%
 
 ageg_income
 
-'''ggplot(data =ageg_income, aes(x=ageg,y=mean_income))+
-  geom_col()+
-  scale_x_discrete(limits = c("young","middle","old"))
-'''
-'''
-ggplot(data =ageg_income, aes(x=ageg,y=mean_income,fill=mean_income))+
-  geom_col()+
-  scale_x_discrete(limits = c("young","middle","old"))
-'''
-'''
-ggplot(data=sex_income,aes(x=ageg,y = mean_income,fill=sex))+
-  geom_col(position="dodge")+
-  scale_x_discrete(limits=c("young","middle","old"))
-'''
+#ggplot(data =ageg_income, aes(x=ageg,y=mean_income))+
+#  geom_col()+
+#  scale_x_discrete(limits = c("young","middle","old"))
 
 
+#ggplot(data =ageg_income, aes(x=ageg,y=mean_income,fill=mean_income))+
+#  geom_col()+
+#  scale_x_discrete(limits = c("young","middle","old"))
+
+#ggplot(data=sex_income,aes(x=ageg,y = mean_income,fill=sex))+
+#  geom_col(position="dodge")+
+#  scale_x_discrete(limits=c("young","middle","old"))
+
+welfare<-left_join(welfare,list_job,id="code_job")
+
+welfare%>%
+  filter(!is.na(code_job))%>%
+  select(code_job)%>%
+  head(10)
+
+job_income<-welfare%>%
+  filter(!is.na(job)&!is.na(income))%>%
+  group_by(job)%>%
+  summarise(mean_income =mean(income))
+
+head(job_income)
