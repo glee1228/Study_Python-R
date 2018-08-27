@@ -11,6 +11,6 @@ print(num)
 
 r1 = re.compile('[0-9][,][0-9][0-9][0-9][.][0-9][0-9]')
 print(r1.findall(num))
-result = r1.findall(num)
+parse_list = r1.findall(num)
+result = str(parse_list)
 print('현재 코스피 지수는 {}입니다.'.format(result))
-
